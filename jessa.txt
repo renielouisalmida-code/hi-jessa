@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 60px;
+    font-size: 2.5em;
+}
+
+#typing {
+    font-size: 1.8em;
+    margin-top: 20px;
+    min-height: 50px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4b6e;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 30px;
+}
+
+button:hover {
+    background: #ff4b6e;
+    color: white;
+    transform: scale(1.1);
+}
+
+#loveLetter {
+    display: none;
+    margin: 30px;
+    font-size: 1.3em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+iframe {
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    max-width: 90%;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hey HER_NAME ❤️</h1>
+
+<div id="typing"></div>
+
+<button onclick="revealLove()">Click For Something Special 💖</button>
+
+<div id="loveLetter">
+    <p>
+        From the moment you came into my life, everything became brighter.
+        Your smile, your laugh, your heart — they mean everything to me.
+        I am so grateful for you every single day.
+        I love you more than words can ever explain. 💕
+    </p>
+
+    <h2>Countdown Until Our Forever 💍</h2>
+    <div id="countdown"></div>
+
+    <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/VKkbJPm3X3A?autoplay=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text = "You are the best thing that ever happened to me 💕";
+let index = 0;
+
+function typeEffect() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 70);
+    }
+}
+typeEffect();
+
+function revealLove() {
+    document.getElementById("loveLetter").style.display = "block";
+}
+
+// Countdown (change date if you want)
+const targetDate = new Date("December 31, 2026 00:00:00").getTime();
+const countdown = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("countdown").innerHTML = days + " days together and counting ❤️";
+
+    if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "Forever Starts Now 💍❤️";
+    }
+}, 1000);
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
